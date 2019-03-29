@@ -127,10 +127,55 @@ function addDescriptionEventToUsers(data) {
         item.addEventListener("click", () => {
             $("body").addClass("overflow-hidden");
             $("#user-details-background").removeClass("display-none");
-            $("#user-details-content").innerHTML = `
+            document.getElementById("user-details-content").innerHTML = `
             <h1>
                 Name: ${data[index].name}
             </h1>
+            <p>
+                Username: ${data[index].username}
+            </p>
+            <p>
+                Email: ${data[index].email}
+            </p>
+            <p>
+                Phone: ${data[index].phone}
+            </p>
+            <p>
+                Website: ${data[index].website}
+            </p>
+            <h1>
+                Address:
+            </h1>
+            <p>
+                Street: ${data[index].address.street}
+            </p>
+            <p>
+                Suite: ${data[index].address.suite}
+            </p>
+            <p>
+                City: ${data[index].address.city}
+            </p>
+            <p>
+                Zipcode: ${data[index].address.zipcode}
+            </p>
+            <p>
+                Lat: ${data[index].address.geo.lat}
+            </p>
+            <p>
+                Lng: ${data[index].address.geo.lng}
+            </p>
+            <h1>
+                Company:
+            </h1>
+            <p>
+                Name: ${data[index].company.name}
+            </p>
+            <p>
+                Phrase: ${data[index].company.catchPhrase}
+            </p>
+            <p>
+                Bs: ${data[index].company.bs}
+            </p>
             `;
         });
     });
