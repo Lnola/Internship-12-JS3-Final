@@ -1,3 +1,6 @@
+body {
+    background-color: black;
+}
 .input-wrapper {
     display: flex;
     flex-direction: column;
@@ -23,6 +26,24 @@
     width: 50%;
     margin: auto;
     margin-top: 20px;
+}
+
+#user-details-background {
+    position: fixed;
+    top: 0;
+    left: 0;;
+    height: 100vw;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+#user-details-content {
+    
 }
 
 .display-none {
