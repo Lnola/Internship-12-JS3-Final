@@ -1,0 +1,30 @@
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: auto;
+    margin-top: 25vh;
+    background-color: rgba(128, 128, 128, 0.4);
+    padding: 20px;
+    padding-top: 0;
+}
+
+.input-wrapper h1 {
+    color: #fff;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.input-wrapper input {
+    margin-top: 20px;
+}
+
+.input-wrapper button {
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.display-none {
+    display: none !important;
+}
