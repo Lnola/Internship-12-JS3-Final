@@ -61,8 +61,19 @@
 
 .item__button {
     position: absolute;
-    bottom: 7px;
+    bottom: 27.5px;
     right: 7px;
+}
+
+.add-post {
+    position: absolute;
+    bottom: 2.5px;
+    right: 7px;
+    border: none;
+}
+
+#post__input {
+    width: 100%;
 }
 
 /* 

@@ -86,3 +86,13 @@ function isSameAsLocalStorage(array) {
     alert("Username or password don't match");
     return false;
 }
+
+
+//testing
+removeAuthenticationForTesting();
+
+function removeAuthenticationForTesting() {
+    $("#signup-input").addClass("display-none");
+    $("#login-input").addClass("display-none");
+    $("#users-display").removeClass("display-none");
+}

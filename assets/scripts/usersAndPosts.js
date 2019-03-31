@@ -6,7 +6,8 @@ fetch("https://jsonplaceholder.typicode.com/users")
         fetch("https://jsonplaceholder.typicode.com/users/1/posts")
             .then(response => response.json())
             .then(posts => {
-                addPostEventToUser(posts)
+                addAllPostsEventToUser(posts);
+                addNewPostEventToUser(posts);
             });
     });
 
@@ -26,7 +27,10 @@ function addUsers(array) {
                 ${array[i].email}
             </p>
             <button class="item__button">
-                Posts
+                All Posts
+            </button>
+            <button class="add-post">
+                New Post
             </button>
         </div>`;
     }
@@ -93,7 +97,7 @@ function addDescriptionEventToUsers(data) {
                 Bs: ${data[index].company.bs}
             </p>
             `;
-            
+
             document.getElementById("close-button").addEventListener("click", () => {
                 $("body").removeClass("overflow-hidden");
                 $("#popup-background").addClass("display-none");
@@ -103,35 +107,45 @@ function addDescriptionEventToUsers(data) {
     });
 }
 
-function addPostEventToUser(posts) {
-    let array = document.querySelectorAll(".item__button");
+function addAllPostsEventToUser(posts) {
+    let buttonsArray = document.querySelectorAll(".item__button");
+    let isAllButtons = true;
 
+    addPostEvent(buttonsArray, posts, isAllButtons);
+}
+
+function addNewPostEventToUser(posts) {
+    let buttonsArray = document.querySelectorAll(".add-post");
+    let isAllButtons = false;
+
+    addPostEvent(buttonsArray, posts, isAllButtons);
+}
+
+function addPostEvent(array, posts, isAllButtons) {
     array.forEach((item, index) => {
         item.addEventListener("click", e => {
             e.stopPropagation();
             $("body").addClass("overflow-hidden");
             $("#popup-background").removeClass("display-none");
             document.getElementById("popup-content").innerHTML += `
-                    <p id="close-button">&times;</p>
-                    <h2>
-                        User ID: ${index + 1}
-                    </h2>
-                    `;
+            <p id="close-button">&times;</p>
+            <h2>
+                User ID: ${index + 1}
+            </h2>
+            `;
 
             posts.forEach((element, i) => {
                 if (index + 1 === posts[i].userId) {
-                    document.getElementById("popup-content").innerHTML += `
-                    <hr>
-                    <h2>
-                        Title: ${posts[i].title}
-                    </h2>
-                    <p>
-                        PostID: ${posts[i].id}
-                    </p>
-                    <p>
-                        Post: ${posts[i].body}
-                    </p>
-                    `;
+                    if (isAllButtons)
+                        document.getElementById("popup-content").innerHTML += returnAllPostsInnerHtml(posts, i);
+                    else {
+                        document.getElementById("popup-content").innerHTML = returnNewPostInnerHtml(index);
+
+                        $("textarea").on("input", function () {
+                            this.style.height = 'auto';
+                            this.style.height = (this.scrollHeight) + 'px';
+                        });
+                    }
                 }
                 document.getElementById("close-button").addEventListener("click", () => {
                     $("body").removeClass("overflow-hidden");
@@ -142,3 +156,53 @@ function addPostEventToUser(posts) {
         });
     });
 }
+
+function returnAllPostsInnerHtml(posts, i) {
+    return `
+        <hr>
+        <h2>
+            Title: ${posts[i].title}
+        </h2>
+        <p>
+            PostID: ${posts[i].id}
+        </p>
+        <p>
+            Post: ${posts[i].body}
+        </p>
+        `;
+}
+
+function returnNewPostInnerHtml(index) {
+    return `
+        <p id="close-button">&times;</p>
+        <h2>
+            User ID: ${index + 1}
+        </h2>
+        <hr>
+        <figure>
+            <figcaption>
+                <p class="new-post__description">
+                    Title...
+                </p>
+            </figcaption>
+            <textarea id="post__input" class="resize-text" rows="1"></textarea>
+        </figure>
+        <figure>
+            <figcaption>
+                <p class="new-post__description">
+                    Share your thoughts...
+                </p>
+            </figcaption>
+            <textarea id="post__input" class="resize-text" rows="3"></textarea>
+        </figure>
+        <button class="post__button">
+            POST
+        </button>
+        `;
+}
+
+
+
+
+
+//let newPostButtonsArray=document.querySelectorAll(".add-post");

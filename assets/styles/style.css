@@ -57,10 +57,12 @@ body {
 
 #popup-content h1, #popup-content h2 {
     font-size: 20px;
+    color: rgba(0, 0, 0, 0.75);
 }
 
 #popup-content p {
     font-size: 14px;
+    color: grey;
 }
 
 #close-button {
@@ -70,9 +72,10 @@ body {
     font-size: 25px !important;
 }
 
-#close-button:hover, button:hover, .offers__item:hover {
+#close-button:hover, button:hover, .offers__item:hover, .item__paragraph:hover {
     color: steelblue;
     border-color: steelblue;
+    cursor: pointer;
 }
 
 #scroll-arrow {
@@ -86,6 +89,19 @@ button {
     background-color: transparent;
     color: #fff;
     padding: 5px 7px;
+}
+
+textarea {
+    overflow: hidden;
+}
+
+.post__button {
+    margin-left: 45%;
+}
+
+.new-post__description {
+    margin-bottom: 5px;
+    color: grey;
 }
 
 .overflow-hidden {
