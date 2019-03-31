@@ -97,11 +97,16 @@ textarea {
 
 .post__button {
     margin-left: 45%;
+    color: grey
 }
 
 .new-post__description {
     margin-bottom: 5px;
     color: grey;
+}
+
+.post__input {
+    width: 100%;
 }
 
 .overflow-hidden {
